@@ -2,25 +2,29 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
   entry: [
-    'webpack-hot-middleware/client',
-    './src/index'
+    'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
+    './javascripts/app.jsx'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: 'http://localhost:3001/static/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       loaders: ['babel'],
-      include: path.join(__dirname, 'src')
+      include: [
+        path.join(__dirname, 'javascripts')
+      ]
     }]
   }
 };
