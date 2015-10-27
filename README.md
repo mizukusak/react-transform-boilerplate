@@ -7,5 +7,5 @@ npm install
 npm start
 ```
 
-and from the backend, call `<script src="http://localhost:3001/static/bundle.js>"`
+and from the backend, call `<script src="http://localhost:3001/static/bundle.js">`
 
